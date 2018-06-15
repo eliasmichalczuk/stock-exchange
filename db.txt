@@ -1,0 +1,66 @@
+//no mysql alterar colação
+
+create database bolsaDeValores;
+
+
+create table usuarioTipo (
+id int NOT NULL,
+PRIMARY KEY (id),
+descricao varchar (15) NOT NULL
+);
+
+create table  usuario (
+    id int NOT NULL,
+PRIMARY KEY (id),
+CPF varchar(11) UNIQUE  default NULL,
+CNPJ varchar(30) UNIQUE default NULL,
+nome varchar(30) not null,
+senha varchar(60) not null,
+    usuarioTipo_id int,
+FOREIGN KEY (usuarioTipo_id) references usuarioTipo (id),
+email varchar(30) not null);
+
+create table empresatipo(
+    id int NOT NULL,
+PRIMARY KEY (id),
+descricao (50) not null
+);
+create table empresa(
+    id int NOT NULL,
+PRIMARY KEY (id),
+nome varchar(30) not null,
+capitalSocial int
+);
+
+create table ramo(
+    id int NOT NULL,
+PRIMARY KEY (id),
+descricao varchar(30) NOT NULL
+);
+
+create table movimentacaoTipo(
+    id int NOT NULL,
+PRIMARY KEY (id),
+descricao varchar(15) NOT NULL
+);
+
+create table movimentacao(
+    id int NOT NULL,
+PRIMARY KEY (id),
+    movimentacaoTipo_id int NOT NULL,
+FOREIGN KEY (movimentacaoTipo_id) REFERENCES movimentacao(id),
+    empresa_id int NOT NULL,
+FOREIGN KEY (empresa_id) REFERENCES empresa (id),
+qtdAcoes int NOT NULL,
+valorAcao int NOT NULL
+);
+
+insert into ramo(id,descricao) values
+(1,'Agroindustria'),(2,'TI'),(3,'Industria de base'),(4,'Vestuario');
+
+ALTER TABLE empresa
+  ADD CONSTRAINT empresa_ramoid_fkey FOREIGN KEY (ramo_id)
+      REFERENCES ramo (id)
+      ON UPDATE CASCADE ON DELETE CASCADE;
+
+
