@@ -1,4 +1,4 @@
-//no mysql alterar colaÃ§Ã£o
+//no mysql alterar colação
 
 create database bolsaDeValores;
 
@@ -63,4 +63,6 @@ ALTER TABLE empresa
       REFERENCES ramo (id)
       ON UPDATE CASCADE ON DELETE CASCADE;
 
+insert into empresa (id,nome,capitalSocial,ramo_id) values
+(1,'InformaCIA',1000000,2),(2,'Grão',1500000,1);
 
