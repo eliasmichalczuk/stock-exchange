@@ -1,0 +1,28 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package EDA;
+
+/**
+ *
+ * @author Elias
+ */
+public class Movimentacao {
+    public int id;
+    public int movimentacaoTipo_id;
+    public int empresa_id;
+    public int valorAcao;
+    public int valorAcoes;
+
+    public Movimentacao(int id, int movimentacaoTipo_id, int empresa_id, int valorAcao, int valorAcoes) {
+        this.id = id;
+        this.movimentacaoTipo_id = movimentacaoTipo_id;
+        this.empresa_id = empresa_id;
+        this.valorAcao = valorAcao;
+        this.valorAcoes = valorAcoes;
+    }
+    
+    
+}
