@@ -54,6 +54,11 @@ qtdAcoes int NOT NULL,
 valorAcao int NOT NULL
 );
 
+alter table movimentacao
+add constraint fk_movi_empresaid
+foreign key (empresa_id)
+references empresa (id)
+
 insert into ramo(id,descricao) values
 (1,'Agroindustria'),(2,'TI'),(3,'Industria de base'),(4,'Vestuario');
 
@@ -69,3 +74,4 @@ alter table empresa
     add constraint fk_ramo_empresa
     foreign key (ramo_id) 
     REFERENCES ramo (id);
+
