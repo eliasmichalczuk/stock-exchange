@@ -75,3 +75,6 @@ alter table empresa
     foreign key (ramo_id) 
     REFERENCES ramo (id);
 
+insert into movimentacaoTipo (id, descricao) values (1,'compra'),(2,'venda');
+insert into movimentacao (id, movimentacaoTipo_id, empresa_id, qtdAcoes, valorAcao) values (1,1,1,4,1000);
+
