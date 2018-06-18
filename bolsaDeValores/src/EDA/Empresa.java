@@ -13,10 +13,14 @@ public class Empresa {
     public int id;
     public String nome;
     public int capitalSocial;
+    public int ramo_id;
+    public String ramo_desc;
 
-    public Empresa(int id, String nome, int capitalSocial) {
+    public Empresa(int id, String nome, int capitalSocial, int ramo_id, String ramo_desc) {
         this.id = id;
         this.nome = nome;
         this.capitalSocial = capitalSocial;
+        this.ramo_id = ramo_id;
+        this.ramo_desc = ramo_desc;
     }
 }
