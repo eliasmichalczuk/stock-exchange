@@ -1,12 +1,10 @@
-
+package app;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.SwingWorker;
 import org.knowm.xchart.QuickChart;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
-import EDA.Movimentacao;
-import DAO.Connect;
 
 /** Creates a real-time chart using SwingWorker */
 public class SwingWorkerRealTime {
@@ -23,7 +21,7 @@ public class SwingWorkerRealTime {
     
   }
 
-  private void go() {
+  public void go() {
 
     // Create Chart
     chart =
@@ -55,14 +53,14 @@ public class SwingWorkerRealTime {
     }
 
     @Override
-    protected Boolean doInBackground() throws Exception {
+    public Boolean doInBackground() throws Exception {
 
       while (!isCancelled()) {
 
-        //fifo.add(fifo.get(fifo.size() - 1) + Math.random() - .4);
-        valorAcao = Connect.getAcao(1);
-        fifo.add(valorAcao);
-        if (fifo.size() > 100) {
+        fifo.add(fifo.get(fifo.size() - 1) + Math.random() - .5);
+//        valorAcao = Connect.getAcao(1);
+//        fifo.add(valorAcao);
+        if (fifo.size() > 500) {
           fifo.removeFirst();
         }
 
@@ -73,7 +71,7 @@ public class SwingWorkerRealTime {
         publish(array);
 
         try {
-          Thread.sleep(500);
+          Thread.sleep(10);
         } catch (InterruptedException e) {
           // eat it. caught when interrupt is called
           System.out.println("MySwingWorker shut down.");
@@ -84,7 +82,7 @@ public class SwingWorkerRealTime {
     }
 
     @Override
-    protected void process(List<double[]> chunks) {
+    public void process(List<double[]> chunks) {
 
       System.out.println("number of chunks: " + chunks.size());
 

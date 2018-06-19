@@ -27,4 +27,10 @@ public class Main {
         window.setVisible( true );
     }
     
+    public static void showGrafico() throws Exception
+    {
+        String[] args = {};
+        SwingWorkerRealTime.main(args);
+    }
+    
 }

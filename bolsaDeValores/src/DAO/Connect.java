@@ -15,10 +15,10 @@ import java.util.ArrayList;
 public class Connect {
     static Connection c = null;
     
-    private boolean conectar(){
+    private static boolean conectar(){
         try {
             Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection("jdbc:postgres://localhost:5432/bolsadevalores",
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bolsadevalores",
                                             "postgres", "postgres");
             
         } catch (Exception e) {
@@ -97,9 +97,8 @@ public class Connect {
                 int id = rs.getInt("id");
                 String  nome = rs.getString("nome");
                 int  capitalSocial = rs.getInt("capitalSocial");
-                String ramo_desc = rs.getString("ramo_desc");
+                String ramo_desc = rs.getString("descricao");
                 query.add (new Empresa(id, nome, capitalSocial, 0, ramo_desc));
-                
             }
             rs.close();
             stmt.close();
@@ -154,7 +153,7 @@ public class Connect {
     }
     
     
-    public double getAcao(int empresa_nome){
+    public static double getAcao(int empresa_nome){
         if( !conectar() ) return 0;
         double resultado = 0.00;
         try{
