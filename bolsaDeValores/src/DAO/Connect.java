@@ -6,6 +6,7 @@ import EDA.Empresa;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -178,6 +179,25 @@ public class Connect {
         Connect test = new Connect();
         double acao = test.getAcao(1);
           System.out.println(acao);
+    }
+
+    public boolean cadastrarMovimentacao(Movimentacao m) throws SQLException {
+        if( !conectar() ) return false;
+        Movimentacao resultado = null;
+        try{
+        Statement stmt = null;
+            stmt = c.createStatement();
+            String sql = "INSERT INTO movimentacao (m.movimentacaoTipo_id, empresa_id, valorAcao, valorAcoes)"
+                    + "VALUES ("+m.movimentacaoTipo_id+", "+m.empresa_id+", "+m.valorAcao+", "+m.valorAcoes+")";
+            stmt.executeUpdate( sql );
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( "ERRO DURANTE INSERÇÃO: cadastrarPaciente");
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            return false;
+        }
+        return true;
     }
     
 }

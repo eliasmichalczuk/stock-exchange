@@ -23,4 +23,9 @@ public class Empresa {
         this.ramo_id = ramo_id;
         this.ramo_desc = ramo_desc;
     }
+    
+    public String toString()
+    {
+        return this.nome;
+    }
 }
