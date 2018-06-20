@@ -1,5 +1,5 @@
 
-
+//java thread pool
 create table usuarioTipo (
 id int NOT NULL,
 PRIMARY KEY (id),
