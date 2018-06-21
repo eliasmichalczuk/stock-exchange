@@ -254,6 +254,33 @@ public class Connect {
         double acao = test.getAcao(1);
           System.out.println(acao);
     }
+    
+    public boolean getLogin(String cpf, String senha){
+        if( !conectar() ) return false;
+        try{
+            Statement stmt = null;
+            stmt = c.createStatement();
+            String sql = "SELECT id FROM usuario WHERE cpf = '"+cpf+"' and senha = '"+senha+"'";
+            ResultSet rs = stmt.executeQuery( sql );
+            if(!rs.next())
+            {
+                rs.close();
+                stmt.close();
+                c.close();
+                return false;
+            }
+            else
+            {
+                rs.close();
+                stmt.close();
+                c.close();
+                return true;
+            }
+        } catch ( Exception e ) {
+            System.err.println( "ERRO DURANTE CONSULTA");
+        }
+        return false;
+    }
 
     public boolean cadastrarMovimentacao(Movimentacao m) throws SQLException {
         if( !conectar() ) return false;
