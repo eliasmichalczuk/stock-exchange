@@ -7,7 +7,7 @@ import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
 
 /** Creates a real-time chart using SwingWorker */
-public class SwingWorkerRealTime implements Runnable{
+public class SwingWorkerRealTime {
 
   MySwingWorker mySwingWorker;
   SwingWrapper<XYChart> sw;
@@ -16,9 +16,9 @@ public class SwingWorkerRealTime implements Runnable{
 
   public static void main(String[] args) throws Exception {
 
-      
     SwingWorkerRealTime swingWorkerRealTime = new SwingWorkerRealTime();
-    swingWorkerRealTime.run();
+    swingWorkerRealTime.go();
+    
   }
 
   public void go() {
@@ -42,11 +42,6 @@ public class SwingWorkerRealTime implements Runnable{
     mySwingWorker = new MySwingWorker();
     mySwingWorker.execute();
   }
-
-    @Override
-    public void run() {
-        go();
-    }
 
   private class MySwingWorker extends SwingWorker<Boolean, double[]> {
 

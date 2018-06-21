@@ -13,12 +13,15 @@ public class Usuario {
     public String cpf;
     public String nome;
     public String senha;
+    public int idade;
     public String email;
 
-    public Usuario(String cpf, String nome, String senha, String email) {
+    public Usuario( String cpf, String nome, String senha, int idade, String email) {
         this.cpf = cpf;
         this.nome = nome;
         this.senha = senha;
+        this.idade = idade;
         this.email = email;
     }
+
 }

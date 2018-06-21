@@ -1,8 +1,10 @@
 package DAO;
+import static DAO.BancoDados.c;
 import EDA.Usuario;
 import EDA.UsuarioTipo;
 import EDA.Movimentacao;
 import EDA.Empresa;
+import EDA.Paciente;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,7 +21,7 @@ public class Connect {
     private static boolean conectar(){
         try {
             Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bolsadevalores",
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
                                             "postgres", "postgres");
             
         } catch (Exception e) {
@@ -34,59 +36,104 @@ public class Connect {
     public ArrayList<Usuario> getUsuario()
     {
         if( !conectar() ) return null;
-        ArrayList<Usuario> query = new ArrayList();
+        ArrayList<Usuario> resultado = new ArrayList();
         try{
             Statement stmt = null;
             stmt = c.createStatement();
-            String sql = "Select * from usuario";
+            String sql = "SELECT * FROM usuario";
             ResultSet rs = stmt.executeQuery(sql);
             while ( rs.next() ) 
             {
-                int id = rs.getInt("id");
-                String  cpf = rs.getString("cpf");
-                String cnpj = rs.getString("cnpj");
-                String  nome = rs.getString("nome");
-                String email  = rs.getString("email");
-                String senha  = rs.getString("senha");
-                query.add( new Usuario(cpf, nome, email, senha) );
+                String cpf = rs.getString("cpf");
+                String nome = rs.getString("nome");
+                String senha = rs.getString("senha");
+                int idade  = rs.getInt("idade");
+                String email = rs.getString("email");
+                resultado.add( new Usuario( cpf, nome, senha, idade, email));
             }
             rs.close();
             stmt.close();
             c.close();
         } catch ( Exception e ) {
-            System.err.println( "ERRO DURANTE CONSULTA: getPacientes");
+            System.err.println( "ERRO DURANTE CONSULTA: getUsuario");
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
         }
-        return query;
+        return resultado;
         }
     
-    public boolean getLogin(String cpf, String senha){
-        if( !conectar() ) return false;
+    
+    
+    
+    
+    public Usuario getUsuario(String codigo){
+        if( !conectar() ) return null;
+        Usuario resultado = null;
         try{
             Statement stmt = null;
             stmt = c.createStatement();
-            String sql = "SELECT id FROM usuario WHERE cpf = '"+cpf+"' and senha = '"+senha+"'";
+            String sql = "SELECT * FROM usuario WHERE cpf = "+codigo;
             ResultSet rs = stmt.executeQuery( sql );
-            if(!rs.next())
-            {
-                rs.close();
-                stmt.close();
-                c.close();
-                return false;
+            while ( rs.next() ) {
+                String cpf = rs.getString("cpf");
+                String nome = rs.getString("nome");
+                String senha = rs.getString("senha");
+                int idade  = rs.getInt("idade");
+                String email = rs.getString("email");
+                resultado = new Usuario(cpf, nome, senha, idade, email);
             }
-            else
-            {
-                rs.close();
-                stmt.close();
-                c.close();
-                return true;
-            }
+            rs.close();
+            stmt.close();
+            c.close();
         } catch ( Exception e ) {
-            System.err.println( "ERRO DURANTE CONSULTA");
+            System.err.println( "ERRO DURANTE CONSULTA: getUsuario");
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
         }
-        return false;
+        return resultado;
     }
-
+    
+    
+    
+    public boolean cadastrarUsuario(Usuario u){
+        if( !conectar() ) return false;
+        Paciente resultado = null;
+        try{
+            Statement stmt = null;
+            stmt = c.createStatement();
+            String sql = "INSERT INTO usuario (cpf, nome, senha, idade, email)"
+                    + "VALUES ('"+u.cpf+"', '"+u.nome+"', '"+u.senha+"', "+u.idade+", '"+u.email+"')";
+            stmt.executeUpdate( sql );
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( "ERRO DURANTE INSERÇÃO: cadastrarUsuario");
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
+     public boolean alterarPaciente(Usuario u){
+        if( !conectar() ) return false;
+        Usuario resultado = null;
+        try{
+            Statement stmt = null;
+            stmt = c.createStatement();
+            String sql = "UPDATE usuario SET cpf = '"+u.cpf+"', nome = '"+u.nome+"', "
+                    + "senha = '"+u.senha+"', idade = "+u.idade+", email = '"+u.email+"'  "
+                    + "WHERE cpf = "+u.cpf;
+            stmt.executeUpdate( sql );
+            stmt.close();
+            c.close();
+        } catch ( Exception e ) {
+            System.err.println( "ERRO DURANTE ATUALIZAÇÃO: alterarUsuario");
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            return false;
+        }
+        return true;
+    }
+    
 
     public Empresa getEmpresa(int id){
         if( !conectar() ) return null;
@@ -226,5 +273,6 @@ public class Connect {
         }
         return true;
     }
+
     
 }
