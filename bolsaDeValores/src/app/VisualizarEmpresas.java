@@ -56,7 +56,7 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
                 {
                     
                 }
-        Movimentacao movimentacao = new Movimentacao(1, tipo, empresa_id, valor_acao, qtd_acao);
+        Movimentacao movimentacao = new Movimentacao(tipo, empresa_id, valor_acao, qtd_acao);
         
         boolean resultado = false;
         try {
@@ -89,7 +89,7 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        botaosair = new javax.swing.JButton();
         combobox = new javax.swing.JComboBox<>();
         comprar = new javax.swing.JRadioButton();
         vender = new javax.swing.JRadioButton();
@@ -131,10 +131,10 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabela);
 
-        jButton1.setText("< Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaosair.setText("< Sair");
+        botaosair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaosairActionPerformed(evt);
             }
         });
 
@@ -200,7 +200,7 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
                 .addGap(72, 72, 72))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaosair, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(196, 196, 196))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(91, 91, 91)
@@ -238,7 +238,7 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(grafico, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)))
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botaosair, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -246,10 +246,10 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botaosairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaosairActionPerformed
         close();
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botaosairActionPerformed
     
     private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
         // TODO add your handling code here:
@@ -350,11 +350,11 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaosair;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> combobox;
     private javax.swing.JRadioButton comprar;
     private javax.swing.JButton grafico;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
