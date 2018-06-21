@@ -1,5 +1,4 @@
 
-//java thread pool
 create table usuarioTipo (
 id int NOT NULL,
 PRIMARY KEY (id),
@@ -8,7 +7,6 @@ descricao varchar (15) NOT NULL
 
 create table  usuario (
     id BIGSERIAL PRIMARY KEY,
-PRIMARY KEY (id),
 CPF varchar(11) UNIQUE  default NULL,
 nome varchar(30) not null,
 senha varchar(60) not null,
@@ -56,7 +54,7 @@ valorAcao int NOT NULL
 alter table movimentacao
 add constraint fk_movi_empresaid
 foreign key (empresa_id)
-references empresa (id)
+references empresa (id);
 
 insert into ramo(id,descricao) values
 (1,'Agroindustria'),(2,'TI'),(3,'Industria de base'),(4,'Vestuario');
@@ -75,5 +73,6 @@ alter table empresa
     REFERENCES ramo (id);
 
 insert into movimentacaoTipo (id, descricao) values (1,'compra'),(2,'venda');
-insert into movimentacao (id, movimentacaoTipo_id, empresa_id, qtdAcoes, valorAcao) values (1,1,1,4,1000);
 
+insert into movimentacao (movimentacaoTipo_id, empresa_id, qtdAcoes, valorAcao)
+values (1,1,5,1000),(2,1,5,1000),(1,1,5,1000),(2,2,5,1500),(1,1,5,1500),(2,2,5,1500);
