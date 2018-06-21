@@ -7,7 +7,7 @@ descricao varchar (15) NOT NULL
 );
 
 create table  usuario (
-    id BIGSERIAL PRIMARY KEYL,
+    id BIGSERIAL PRIMARY KEY,
 PRIMARY KEY (id),
 CPF varchar(11) UNIQUE  default NULL,
 CNPJ varchar(30) UNIQUE default NULL,
