@@ -10,9 +10,9 @@ create table  usuario (
     id BIGSERIAL PRIMARY KEY,
 PRIMARY KEY (id),
 CPF varchar(11) UNIQUE  default NULL,
-CNPJ varchar(30) UNIQUE default NULL,
 nome varchar(30) not null,
 senha varchar(60) not null,
+idade varchar(30) not null,
     usuarioTipo_id int,
 FOREIGN KEY (usuarioTipo_id) references usuarioTipo (id),
 email varchar(30) not null);
