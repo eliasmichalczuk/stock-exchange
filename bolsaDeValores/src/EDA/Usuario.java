@@ -10,17 +10,13 @@ package EDA;
  * @author Elias
  */
 public class Usuario {
-    public int id;
     public String cpf;
-    public String cnpj;
     public String nome;
     public String senha;
     public String email;
 
-    public Usuario(int id, String cpf, String cnpj, String nome, String senha, String email) {
-        this.id = id;
+    public Usuario(String cpf, String nome, String senha, String email) {
         this.cpf = cpf;
-        this.cnpj = cnpj;
         this.nome = nome;
         this.senha = senha;
         this.email = email;

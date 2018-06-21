@@ -6,7 +6,7 @@ import DAO.Connect;
 /**
  * @author UDESC
  */
-public class Main {
+public class Main implements Runnable{
     private static Connect bd;
     private static BDV window;
     private static VisualizarEmpresas empresa;
@@ -15,8 +15,10 @@ public class Main {
         bd = new Connect();
         window = new BDV();
         window.setVisible( true );
-        empresa = new VisualizarEmpresas();
-        empresa.setVisible(true);
+        //empresa = new VisualizarEmpresas();
+        //empresa.setVisible(true);
+        
+        
     }
     
     public static Connect getBD(){
@@ -31,6 +33,11 @@ public class Main {
     {
         String[] args = {};
         SwingWorkerRealTime.main(args);
+    }
+
+    @Override
+    public void run() {
+        
     }
     
 }
