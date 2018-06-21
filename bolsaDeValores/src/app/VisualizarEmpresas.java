@@ -56,7 +56,7 @@ public class VisualizarEmpresas extends javax.swing.JFrame {
                 {
                     
                 }
-        Movimentacao movimentacao = new Movimentacao(tipo, empresa_id, valor_acao, qtd_acao);
+        Movimentacao movimentacao = new Movimentacao(1, tipo, empresa_id, valor_acao, qtd_acao);
         
         boolean resultado = false;
         try {

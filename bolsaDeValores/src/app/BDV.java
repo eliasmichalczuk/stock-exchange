@@ -10,7 +10,6 @@ package app;
  * @author Elias
  */
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 public class BDV extends javax.swing.JPanel {
 
     /**
@@ -30,9 +29,9 @@ public class BDV extends javax.swing.JPanel {
     private void initComponents() {
 
         titulo = new javax.swing.JLabel();
-        botaologin = new javax.swing.JButton();
-        javax.swing.JTextField campologin = new javax.swing.JTextField();
-        camposenha = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        javax.swing.JTextField login = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -43,16 +42,21 @@ public class BDV extends javax.swing.JPanel {
         titulo.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         titulo.setText("Bolsa de Valores");
 
-        botaologin.setBackground(new java.awt.Color(25, 181, 254));
-        botaologin.setText("login");
-        botaologin.setToolTipText("");
-        botaologin.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(25, 181, 254));
+        jButton1.setText("login");
+        jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaologinActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        campologin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel1.setText("Login");
@@ -79,8 +83,8 @@ public class BDV extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campologin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(camposenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
@@ -89,11 +93,11 @@ public class BDV extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jButton2))
+                        .addGap(113, 113, 113)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(botaologin, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(90, 90, 90)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -104,14 +108,14 @@ public class BDV extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(campologin, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(camposenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(botaologin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(36, 36, 36)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(23, 23, 23))
         );
@@ -119,62 +123,26 @@ public class BDV extends javax.swing.JPanel {
         titulo.setFont(new java.awt.Font("Tahoma", 1, 18));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaologinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaologinActionPerformed
-        new VisualizarEmpresas().setVisible(true);
-        this.setVisible( false );
-    }//GEN-LAST:event_botaologinActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         RegisterForm rgf = new RegisterForm();
         rgf.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
-    
-    private void tratarLogin()
-    {
-        String login, senha;
-        try
-        {
-            login = campologin.getText();
-            senha = camposenha.getText();   
-        }
-         catch ( NumberFormatException ex ){
-                showErroPreenchimento();
-                return;
-            }
-        
-        boolean result = Main.getBD().getLogin(login, senha);
-        if(!result)
-        {
-            JOptionPane.showMessageDialog(this, "Usuario ou senha incorretos!", "Resultado", JOptionPane.INFORMATION_MESSAGE);
-            limpaCampos();
-        }
-        else
-        {
-            
-        }
-        
-    }
-    
-    
-    private void showErroPreenchimento(){
-        JOptionPane.showMessageDialog(this, "Verifique o preenchimento dos dados!", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-    private void showErroBD(){
-        JOptionPane.showMessageDialog(this, "Ocorreu algum erro ao registrar dados no BD!", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-    
-    private void limpaCampos(){
-        camposenha.setText("");
-        campologin.setText("");
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaologin;
-    private javax.swing.JPasswordField camposenha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
-    private javax.swing.JPasswordField campologin;
 }
