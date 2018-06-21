@@ -45,8 +45,7 @@ descricao varchar(15) NOT NULL
 );
 
 create table movimentacao(
-    id int NOT NULL,
-PRIMARY KEY (id),
+    id BIGSERIAL PRIMARY KEY,
     movimentacaoTipo_id int NOT NULL,
 FOREIGN KEY (movimentacaoTipo_id) REFERENCES movimentacao(id),
     empresa_id int NOT NULL,
